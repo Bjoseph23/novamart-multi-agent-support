@@ -20,7 +20,7 @@ A customer message goes to the **orchestrator**, which creates a workflow sessio
 
 ![Agents and tools reference](docs/agents-and-tools.png)
 
-*Agents, tools and the workflow state schema. (The diagram labels say Claude 3; this build uses Claude Haiku 4.5 and Sonnet 4.5.)*
+*Agents, tools and the workflow state schema.*
 
 ### Request flows
 
