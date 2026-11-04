@@ -6,7 +6,7 @@ Built as the capstone of the Future AWS Agent Engineer Nanodegree (AWS x Udacity
 
 ![NovaMart architecture](docs/architecture.png)
 
-**Next step: UI concept.** A chat interface for non-technical users, with interactive cards instead of plain text: live agent progress, an order card with a confirm step before a return, grounded policy answers with sources, and a human handoff.
+**Next step: UI concept.** A chat interface for non-technical users, with interactive cards instead of plain text: live agent progress, an order card with a confirm step before a return, grounded policy answers with sources, and a human handoff. MCP-Apps, Generative Ui and Dynamic Interface
 
 ![NovaMart UI concept](docs/ui-concept.png)
 
