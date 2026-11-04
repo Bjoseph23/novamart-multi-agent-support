@@ -6,6 +6,12 @@ Built as the capstone of the Future AWS Agent Engineer Nanodegree (AWS x Udacity
 
 ![NovaMart architecture](docs/architecture.png)
 
+**Next step: UI concept.** A chat interface for non-technical users, with interactive cards instead of plain text: live agent progress, an order card with a confirm step before a return, grounded policy answers with sources, and a human handoff.
+
+![NovaMart UI concept](docs/ui-concept.png)
+
+*Design concept only; not implemented in this repo.*
+
 ## How it works
 
 A customer message goes to the **orchestrator**, which creates a workflow session and calls the specialist agents it needs:
@@ -129,11 +135,3 @@ Removes the deployed AWS resources so they stop costing money.
 - Optimistic locking keeps shared agent state consistent
 - Guardrail topic definitions need careful wording, or they block legitimate requests such as plain arithmetic
 - Real deployments (IAM roles, resource conflicts, tracing) teach more than the happy path
-
-## UI concept (next step)
-
-A chat interface for non-technical users, using generative UI so answers are interactive cards rather than plain text: a live progress timeline while the agents work, an order card with a confirmation step before a return starts, grounded policy comparisons with source chips, and a human handoff when a request is blocked by the guardrail.
-
-![NovaMart UI concept](docs/ui-concept.png)
-
-*Design concept only; not implemented in this repo.*
