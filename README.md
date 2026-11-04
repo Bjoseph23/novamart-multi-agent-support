@@ -18,7 +18,15 @@ A customer message goes to the **orchestrator**, which creates a workflow sessio
 | Policy | Claude Sonnet 4.5 | Fans out to 3 retrievers in parallel and synthesizes the answer |
 | Communication | Claude Sonnet 4.5 | Writes the final reply and handles price/discount arithmetic |
 
-Example flows: a return request goes Inventory -> Refund -> Communication, a policy question goes Policy -> Communication, and a math question goes straight to Communication.
+![Agents and tools reference](docs/agents-and-tools.png)
+
+*Agents, tools and the workflow state schema. (The diagram labels say Claude 3; this build uses Claude Haiku 4.5 and Sonnet 4.5.)*
+
+### Request flows
+
+A return request goes Inventory -> Refund -> Communication, a policy question goes Policy -> Communication, and a math question goes straight to Communication.
+
+![Request flow scenarios](docs/request-flows.png)
 
 ## Features
 
@@ -58,14 +66,27 @@ Python 3.12, Strands Agents SDK, Amazon Bedrock (Claude Haiku 4.5, Sonnet 4.5, T
 
 ## Getting started
 
-**Prerequisites:** an AWS account with Bedrock model access (Claude Haiku 4.5, Sonnet 4.5, Titan Embeddings v2) in `us-east-1`, AWS CLI configured, Python 3.12, Node.js 20+, and `uv`.
+### Prerequisites
+
+- Python 3.12 (matches the deployed runtime)
+- An AWS account with Bedrock model access (Claude Haiku 4.5, Sonnet 4.5, Titan Embeddings v2) in `us-east-1`
+- IAM permissions for Bedrock, Bedrock AgentCore, DynamoDB, S3, S3 Vectors, CloudFormation, CloudWatch and X-Ray. The AgentCore CLI deploys through AWS CDK, so `cloudformation:*`, `iam:PassRole` and the CDK bootstrap roles are needed too
+- Three Bedrock Knowledge Bases, created manually in the AWS Console (step 3 below)
+- The AgentCore CLI (`@aws/agentcore` on npm), which packages and deploys the runtime. It needs Node.js 20+ and `uv`:
+  ```bash
+  npm install -g @aws/agentcore@0.30.0
+  agentcore --version
+  ```
+  If you have the older Python `bedrock-agentcore-starter-toolkit` installed, remove it first (`pip uninstall bedrock-agentcore-starter-toolkit`), because both install an `agentcore` command.
+- The runtime runs on arm64 and Python 3.12. `agentcore deploy` downloads matching wheels with `uv`, so it needs internet access
+
+### Install
 
 ```bash
 git clone https://github.com/<your-username>/novamart-multi-agent-support.git
 cd novamart-multi-agent-support
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-npm install -g @aws/agentcore
 cp .env.example .env
 ```
 
